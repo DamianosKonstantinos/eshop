@@ -10,6 +10,4 @@ public class EshopProjectApplication {
 		SpringApplication.run(EshopProjectApplication.class, args);
 	}
 
-	//test commit comment
-
 }
