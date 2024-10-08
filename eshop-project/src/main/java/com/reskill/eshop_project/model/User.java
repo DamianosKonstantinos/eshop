@@ -1,4 +1,4 @@
-package com.reskill.eshop_project;
+package com.reskill.eshop_project.model;
 
 import java.util.*;
 
