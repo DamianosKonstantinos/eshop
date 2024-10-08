@@ -46,5 +46,4 @@ public class User {
     private List<Order> Orders;
     private List<Product> Favourites;
 
-    
 }
