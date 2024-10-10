@@ -13,7 +13,7 @@ public class User {
 
     private String Password;
     public String getPassword() {
-        return Password;
+        return Password;   
     }
     public void setPassword(String password) {
         Password = password;
