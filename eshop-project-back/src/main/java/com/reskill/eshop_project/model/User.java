@@ -1,8 +1,12 @@
 package com.reskill.eshop_project.model;
 
 import java.util.*;
+import javax.persistence.*;
 
+@Entity
 public class User {
+    
+    @Username
     private String Username;
     public String getUsername() {
         return Username;
