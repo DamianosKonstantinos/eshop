@@ -1,8 +1,6 @@
 package com.reskill.eshop_project.model;
 
 import java.util.*;
-import javax.persistence.*;
-
 @Entity
 public class User {
     
