@@ -1,13 +1,13 @@
-package com.reskill.eshop_project;
+package com.eshop.backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EshopProjectApplication {
+public class BackendApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EshopProjectApplication.class, args);
+		SpringApplication.run(BackendApplication.class, args);
 	}
 
 }

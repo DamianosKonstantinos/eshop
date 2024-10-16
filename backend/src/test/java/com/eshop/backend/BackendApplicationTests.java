@@ -1,10 +1,10 @@
-package com.reskill.eshop_project;
+package com.eshop.backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class EshopProjectApplicationTests {
+class BackendApplicationTests {
 
 	@Test
 	void contextLoads() {
