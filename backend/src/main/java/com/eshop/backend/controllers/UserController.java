@@ -3,14 +3,13 @@ package com.eshop.backend.controllers;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import com.eshop.backend.models.User;
 import com.eshop.backend.repositories.UserRepository;
 
-@Controller
-@RequestMapping("/")
+@RestController
+@RequestMapping("/users")
 public class UserController {
 
     @Autowired
@@ -28,4 +27,35 @@ public class UserController {
                 .orElse(ResponseEntity.notFound().build());
     }
     
+    @PutMapping("/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User userDetails) {
+        return userRepository.findById(id)
+                .map(user -> {
+                    user.setUsername(userDetails.getUsername());
+                    user.setPassword(userDetails.getPassword());
+                    user.setEmail(userDetails.getEmail());
+                    user.setFname(userDetails.getFname());
+                    user.setLastname(userDetails.getLastname());
+                    user.setRole(userDetails.getRole());
+                    user.setOrders(userDetails.getOrders());
+                    user.setFavorites(userDetails.getFavorites());
+                    User updatedUser = userRepository.save(user);
+                    return ResponseEntity.ok().body(updatedUser);
+                }).orElse(ResponseEntity.notFound().build());
+    }
+
+    @PostMapping
+    public User createUser(@RequestBody User user) {
+        User savedUser = userRepository.save(user);
+        return userRepository.save(savedUser);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable Long id) {
+        return userRepository.findById(id)
+                .map(user -> {
+                    userRepository.delete(user);
+                    return ResponseEntity.ok().build();
+                }).orElse(ResponseEntity.notFound().build());
+    }
 }

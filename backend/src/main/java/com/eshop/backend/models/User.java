@@ -1,10 +1,7 @@
 package com.eshop.backend.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import java.util.List;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")
@@ -13,17 +10,36 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String username;
-    private String email;
     private String password;
+    private String email;
+    private String fname;
+    private String lastname;
+    private String role;
+
+    @ElementCollection
+    @CollectionTable(name = "user_orders", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "order_item")
+    private List<String> orders;
+
+    @ElementCollection
+    @CollectionTable(name = "user_orders", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "order_item")
+    private List<String> favorites;
 
     public User(){
 
     }
-    public User(String username, String email, String password){
-        this.email=email;
-        this.username=username;
-        this.password=password;
+
+    public User(Long id, String username, String password, String email, String fname, String lastname, String role) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.fname = fname;
+        this.lastname = lastname;
+        this.role = role;
     }
+
     // Getters and Setters
     public Long getId() {
         return id;
@@ -55,5 +71,45 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getFname() {
+        return fname;
+    }
+
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public List<String> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<String> orders) {
+        this.orders = orders;
+    }
+
+    public List<String> getFavorites() {
+        return favorites;
+    }
+
+    public void setFavorites(List<String> favorites) {
+        this.favorites = favorites;
     }
 }
