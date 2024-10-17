@@ -30,7 +30,7 @@ public class User {
 
     }
 
-    public User(Long id, String username, String password, String email, String fname, String lastname, String role) {
+    public User(Long id, String username, String password, String email, String fname, String lastname, String role, List<String> favorites, List<String> orders) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -38,6 +38,8 @@ public class User {
         this.fname = fname;
         this.lastname = lastname;
         this.role = role;
+        this.favorites = favorites;
+        this.orders = orders;
     }
 
     // Getters and Setters
