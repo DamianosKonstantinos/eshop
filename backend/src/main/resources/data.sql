@@ -33,3 +33,16 @@ INSERT INTO product_reviews (product_id, review) VALUES
 (3, 'Amazing sound quality'),
 (4, 'Crystal clear display'),
 (5, 'Best keyboard ever');
+
+INSERT INTO orders (id) VALUES
+(1),
+(2),
+(3),
+(4);
+
+INSERT INTO order_products (order_id, product_id) VALUES
+(1, 1),
+(1, 2),
+(2, 3),
+(3, 4),
+(4, 5);

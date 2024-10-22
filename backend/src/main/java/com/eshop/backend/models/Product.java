@@ -9,6 +9,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     @Column(name = "prodname")
     private String prodName;
     private String description;
@@ -16,10 +17,15 @@ public class Product {
     private float price;
     private int sale;
     private int stock;
+
     @ElementCollection
     @CollectionTable(name = "product_reviews", joinColumns = @JoinColumn(name = "product_id"))
     @Column(name = "review")
     private List<String> reviews;
+
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
 
     public Product() {
 
