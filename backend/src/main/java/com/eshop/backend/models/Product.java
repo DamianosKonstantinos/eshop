@@ -23,9 +23,8 @@ public class Product {
     @Column(name = "review")
     private List<String> reviews;
 
-    @ManyToOne
-    @JoinColumn(name = "order_id")
-    private Order order;
+    @ManyToMany(mappedBy = "cart", fetch = FetchType.EAGER)
+    private List<Order> orders;
 
     public Product() {
 

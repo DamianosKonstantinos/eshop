@@ -18,12 +18,12 @@ public class User {
 
     @ElementCollection
     @CollectionTable(name = "user_orders", joinColumns = @JoinColumn(name = "user_id"))
-    @Column(name = "order_item")
+    @Column(name = "order_id")
     private List<String> orders;
 
     @ElementCollection
     @CollectionTable(name = "user_orders", joinColumns = @JoinColumn(name = "user_id"))
-    @Column(name = "order_item")
+    @Column(name = "order_id")
     private List<String> favorites;
 
     public User(){

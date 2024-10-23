@@ -15,18 +15,6 @@ CREATE TABLE users (
     role VARCHAR(255)
 );
 
-CREATE TABLE user_orders (
-    user_id BIGINT,
-    order_item VARCHAR(255),
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-);
-
-CREATE TABLE user_favorites (
-    user_id BIGINT,
-    favorite_item VARCHAR(255),
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-);
-
 CREATE TABLE orders (
     id BIGINT AUTO_INCREMENT PRIMARY KEY
 );
@@ -41,6 +29,21 @@ CREATE TABLE products (
     stock INT,
     order_id BIGINT,
     FOREIGN KEY (order_id) REFERENCES orders(id)
+);
+
+CREATE TABLE user_orders (
+    user_id BIGINT,
+    order_id BIGINT,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE
+
+);
+
+CREATE TABLE user_favorites (
+    user_id BIGINT,
+    product_id VARCHAR(255),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
 );
 
 CREATE TABLE product_reviews (
