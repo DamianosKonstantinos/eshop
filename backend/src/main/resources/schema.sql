@@ -1,8 +1,4 @@
-DROP TABLE IF EXISTS order_products;
-DROP TABLE IF EXISTS user_orders;
-DROP TABLE IF EXISTS user_favorites;
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS products, orders, product_reviews;
+DROP TABLE IF EXISTS products, orders, product_reviews, users, user_products, order_products;
 
 
 CREATE TABLE users (
@@ -16,7 +12,9 @@ CREATE TABLE users (
 );
 
 CREATE TABLE orders (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT,
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 CREATE TABLE products (
@@ -31,15 +29,7 @@ CREATE TABLE products (
     FOREIGN KEY (order_id) REFERENCES orders(id)
 );
 
-CREATE TABLE user_orders (
-    user_id BIGINT,
-    order_id BIGINT,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE
-
-);
-
-CREATE TABLE user_favorites (
+CREATE TABLE user_products (
     user_id BIGINT,
     product_id VARCHAR(255),
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,

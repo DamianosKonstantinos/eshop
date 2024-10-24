@@ -16,21 +16,22 @@ public class User {
     private String lastname;
     private String role;
 
-    @ElementCollection
-    @CollectionTable(name = "user_orders", joinColumns = @JoinColumn(name = "user_id"))
-    @Column(name = "order_id")
-    private List<String> orders;
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders;
 
-    @ElementCollection
-    @CollectionTable(name = "user_orders", joinColumns = @JoinColumn(name = "user_id"))
-    @Column(name = "order_id")
-    private List<String> favorites;
+    @ManyToMany
+    @JoinTable(
+        name = "user_products",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "product_id")
+    )
+    private List<Product> favorites;
 
     public User(){
 
     }
 
-    public User(Long id, String username, String password, String email, String fname, String lastname, String role, List<String> favorites, List<String> orders) {
+    public User(Long id, String username, String password, String email, String fname, String lastname, String role, List<Product> favorites, List<Order> orders) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -99,19 +100,19 @@ public class User {
         this.role = role;
     }
 
-    public List<String> getOrders() {
+    public List<Order> getOrders() {
         return orders;
     }
 
-    public void setOrders(List<String> orders) {
+    public void setOrders(List<Order> orders) {
         this.orders = orders;
     }
 
-    public List<String> getFavorites() {
+    public List<Product> getFavorites() {
         return favorites;
     }
 
-    public void setFavorites(List<String> favorites) {
+    public void setFavorites(List<Product> favorites) {
         this.favorites = favorites;
     }
 }

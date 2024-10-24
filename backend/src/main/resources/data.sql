@@ -12,20 +12,13 @@ INSERT INTO products (prodName, description, category, price, sale, stock) VALUE
 ('Monitor', '4K Ultra HD monitor', 'Electronics', 399.99, 5, 75),
 ('Keyboard', 'Mechanical keyboard with RGB lighting', 'Electronics', 89.99, 25, 150);
 
-INSERT INTO orders(id) VALUES
+INSERT INTO orders(user_id) VALUES
 (1),
 (2),
 (3),
 (4);
 
-INSERT INTO user_orders (user_id, order_id) VALUES
-(1, 1),
-(1, 2),
-(2, 3),
-(3, 4),
-(4, 3);
-
-INSERT INTO user_favorites (user_id, product_id) VALUES
+INSERT INTO user_products (user_id, product_id) VALUES
 (1, 1),
 (2, 2),
 (3, 2),

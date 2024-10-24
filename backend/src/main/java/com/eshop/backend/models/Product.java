@@ -23,8 +23,11 @@ public class Product {
     @Column(name = "review")
     private List<String> reviews;
 
-    @ManyToMany(mappedBy = "cart", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "cart")
     private List<Order> orders;
+
+    @ManyToMany(mappedBy = "favorites")
+    private List<User> users;
 
     public Product() {
 
