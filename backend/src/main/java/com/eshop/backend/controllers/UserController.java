@@ -1,6 +1,7 @@
 package com.eshop.backend.controllers;
 
-import java.util.List;
+import java.util.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,7 @@ import com.eshop.backend.repositories.UserRepository;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
 
     @Autowired
@@ -57,5 +59,16 @@ public class UserController {
                     userRepository.delete(user);
                     return ResponseEntity.ok().build();
                 }).orElse(ResponseEntity.notFound().build());
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> loginUser(@RequestBody User loginRequest) {
+        Optional<User> userOptional = userRepository.findByUsername(loginRequest.getUsername());
+        if (userOptional.isPresent() && userOptional.get().getPassword().equals(loginRequest.getPassword())) {
+            String token = "token";
+            return ResponseEntity.ok().body(token);
+        } else {
+            return ResponseEntity.status(401).body("Invalid credentials");
+        }
     }
 }
