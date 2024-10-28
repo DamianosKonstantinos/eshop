@@ -1,7 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import LoginButton from '../atoms/loginbutton';
+import AdminButton from '../atoms/adminbutton';
 
 const Header = () => {
+
   return (
     <header>
       <nav>
@@ -13,6 +16,8 @@ const Header = () => {
           <li><Link href="/classic">Classic</Link></li>
           <li><Link href="/sport">Sport</Link></li>
           <li><Link href="/sale">Sale</Link></li>
+          <li><LoginButton /></li>
+          <li><AdminButton /></li>
         </ul>
       </nav>
     </header>

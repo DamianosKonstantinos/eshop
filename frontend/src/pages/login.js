@@ -11,9 +11,8 @@ const Login = () => {
   const router = useRouter();
 
   useEffect(() => {
-    const role = sessionStorage.getItem('role');
-    if (role) {
-      console.log(role);
+    const user = sessionStorage.getItem('user');
+    if (user) {
       router.push('/');
     }
   }, [router]);
@@ -26,9 +25,9 @@ const Login = () => {
     e.preventDefault();
     try {
       const loginResponse = await axios.post('http://localhost:8080/users/login', credentials);
-      const role = loginResponse.data.role;
-      sessionStorage.setItem('role', role);
-      console.log(sessionStorage.getItem('role'));
+      const user = loginResponse.data;
+      sessionStorage.setItem('user', JSON.stringify(user));
+      console.log(sessionStorage.getItem('user'));
       router.push('/');
     } catch (error) {
       setError('Login failed. Please check your credentials and try again.');

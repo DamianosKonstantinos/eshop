@@ -46,7 +46,7 @@ public class UserController {
                 }).orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping
+    @PostMapping("/register")
     public User createUser(@RequestBody User user) {
         User savedUser = userRepository.save(user);
         return userRepository.save(savedUser);
