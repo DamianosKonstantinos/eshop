@@ -65,8 +65,8 @@ public class UserController {
     public ResponseEntity<?> loginUser(@RequestBody User loginRequest) {
         Optional<User> userOptional = userRepository.findByUsername(loginRequest.getUsername());
         if (userOptional.isPresent() && userOptional.get().getPassword().equals(loginRequest.getPassword())) {
-            String token = "token";
-            return ResponseEntity.ok().body(token);
+            User user = userOptional.get();
+            return ResponseEntity.ok().body(user);
         } else {
             return ResponseEntity.status(401).body("Invalid credentials");
         }
