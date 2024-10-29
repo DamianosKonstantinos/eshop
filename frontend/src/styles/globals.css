@@ -12,11 +12,7 @@ body{
 footer{
   display: flex;
   justify-content: space-between;
-
-  position: absolute;
   width: 100%;
-  bottom:0;
-
   background: #333333;
 }
 
@@ -38,6 +34,32 @@ footer{
   padding: 1%;
 }
 
+.right-side {
+  display: flex;
+  justify-content: space-between;
+}
+
+.column {
+  flex: 1;
+  margin: 0 10px;
+}
+
+.topic {
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.pageb {
+  display: block;
+  margin-bottom: 5px;
+  text-decoration: none;
+}
+
+.pageb:hover {
+  text-decoration: underline;
+}
+
 .header-links li:hover{
   text-decoration: underline;
 }
@@ -56,3 +78,36 @@ footer{
   flex-grow: 0;
 }
 
+maingrid {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 100%;
+  justify-items: center;
+}
+
+.gridTile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border: 2px solid #fff;
+  text-align: center;
+}
+
+.gridTile:hover{
+  background-color: rgb(233, 228, 219);
+}
+
+header{
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1000;
+}

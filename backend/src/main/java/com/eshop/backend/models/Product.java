@@ -17,6 +17,7 @@ public class Product {
     private float price;
     private int sale;
     private int stock;
+    private String imgURL;
 
     @ElementCollection
     @CollectionTable(name = "product_reviews", joinColumns = @JoinColumn(name = "product_id"))
@@ -35,7 +36,7 @@ public class Product {
 
 
     public Product(Long id, String prodName, String description, String category, float price, int sale, int stock,
-            List<String> reviews) {
+            List<String> reviews, String imgURL) {
         this.id = id;
         this.prodName = prodName;
         this.description = description;
@@ -43,6 +44,7 @@ public class Product {
         this.price = price;
         this.sale = sale;
         this.stock = stock;
+        this.imgURL = imgURL;
         this.reviews = reviews;
     }
 
@@ -82,6 +84,12 @@ public class Product {
     }
     public void setSale(int sale) {
         this.sale = sale;
+    }
+    public String getImgURL() {
+        return imgURL;
+    }
+    public void setImgURL(String imgURL) {
+        this.imgURL = imgURL;
     }
     public int getStock() {
         return stock;

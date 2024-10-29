@@ -30,7 +30,6 @@ const Register = () => {
 
   return (
     <div className="register-container">
-      <h2>Register</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="username">Username</label>
@@ -89,14 +88,17 @@ const Register = () => {
         </div>
         <div>
           <label htmlFor="role">Role</label>
-          <input
-            type="text"
+          <select
             id="role"
             name="role"
             value={credentials.role}
             onChange={handleChange}
             required
-          />
+          >
+            <option value="">Select a role</option>
+            <option value="customer">Customer</option>
+            <option value="admin">Admin</option>
+          </select>
         </div>
         {error && <p className="error">{error}</p>}
         <button type="submit">Register</button>

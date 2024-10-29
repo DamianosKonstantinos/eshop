@@ -25,6 +25,7 @@ CREATE TABLE products (
     price DECIMAL(10,2),
     sale INT,
     stock INT,
+    imgURL VARCHAR(255),
     order_id BIGINT,
     FOREIGN KEY (order_id) REFERENCES orders(id)
 );
